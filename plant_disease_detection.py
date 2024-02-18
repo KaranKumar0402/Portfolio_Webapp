@@ -145,23 +145,21 @@ def runpdd():
         fimg_path = image_select(label="You can also select demo images", images=img_path, captions=img_cap,
                                  use_container_width=False, return_value='index')
         inp_img = str(img_path[fimg_path])
-        to_pass = '..'+inp_img.split(':')[1]
         st.button('Go to Upload⬆️ Image🖼️', on_click=toggle, key='upload')
 
     if not st.session_state.button:
         st.warning('Please try to insert small size images, as there is limited RAM in streamlit🥲.')
         inp_img = st.file_uploader('Upload image of your plant leaf here!!',type=['png','jpg','jpeg'])
-        to_pass = inp_img
 
     if st.button('Predict the Disease🍂'):
         if inp_img is not None:
-            img = Image.open(inp_img)
-            img = transform(img)
+            inp_img = Image.open(inp_img)
+            img = transform(inp_img)
             st.success("Predicted Disease ⬇️")
             colT3, colT4 = st.columns([1, 8])
             with colT4:
                 st.header(predict_image(img, model))
-                st.image(to_pass,width=550,caption='Uploaded Leaf Image!!')
+                st.image(inp_img,width=550,caption='Uploaded Leaf Image!!')
 
         else:
             st.success('Upload Leaf Picture Above ⤴️')
