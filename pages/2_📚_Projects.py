@@ -4,7 +4,6 @@ import bdst as bd
 import MNIST as mnist
 import plant_disease_detection as pdd
 import ImageToTextOCR as ocr
-import webbrowser
 
 # --- PAGE CONFIG ---
 st.set_page_config(
@@ -53,7 +52,7 @@ if selected == 'MNIST Digit Recogniser':
         )
 
 if selected == 'Amazon Web Scraper↗️':
-    webbrowser.open(link)
+    st.link_button('Redirect to Kaggle Notebook of this project',link)
     with st.expander(label=label):
         st.markdown(
             """

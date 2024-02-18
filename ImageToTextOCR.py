@@ -4,12 +4,14 @@ from streamlit_cropperjs import st_cropperjs
 from streamlit_image_select import image_select
 import cv2
 import imageio.v3 as iio
+from pathlib import Path
 
-image_path = '../Streamlit webapps/demo_images/ocr_images/'
+current_directory = Path(__file__).parent if '__file__' in locals() else Path.cwd()
+image_path = current_directory / 'demo_images' / 'ocr_images'
 img_path = [
-    image_path + 'hindi.jpeg', image_path + 'bangali.jpg', image_path + 'urdu.jpeg', image_path + 'telugu.jpg',
-    image_path + 'tamil.jpg',
-    image_path + 'french.jpg', image_path + 'spanish.jpg', image_path + 'german.jpg'
+    image_path / 'hindi.jpeg', image_path / 'bangali.jpg', image_path / 'urdu.jpeg', image_path / 'telugu.jpg',
+    image_path / 'tamil.jpg',
+    image_path / 'french.jpg', image_path / 'spanish.jpg', image_path / 'german.jpg'
 ]
 img_cap = ['hindi', 'Bengali', 'Urdu', 'Telugu', 'Tamil', 'French', 'Spanish', 'German']
 
@@ -101,7 +103,7 @@ lang = [key for key in langdict]
 
 @st.cache_resource(show_spinner=True)
 def loading_model(langlist):
-    rdr = easyocr.Reader(langlist,gpu = True)
+    rdr = easyocr.Reader(langlist, gpu = True)
     return (rdr)
 
 def toggle():
@@ -134,6 +136,7 @@ def runOCR():
         st.session_state.load_state = True
         reader = loading_model(flang)
         st.success("Now you can upload the image or can select demo images 👇")
+        st.warning('Please try to insert small size images, as there is limited RAM in streamlit🥲.')
 
         if "button" not in st.session_state:
             st.session_state.button = False

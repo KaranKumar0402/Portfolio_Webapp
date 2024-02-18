@@ -4,11 +4,13 @@ import torchvision.transforms as transforms
 import streamlit as st
 from PIL import Image
 from streamlit_image_select import image_select
+from pathlib import Path
 
-image_path = '../Streamlit webapps/demo_images/plantdd_images/'
+current_directory = Path(__file__).parent if '__file__' in locals() else Path.cwd()
+image_path = current_directory / 'demo_images' / 'plantdd_images'
 img_path = [
-    image_path + 'AppleBlackRoot.JPG', image_path + 'AppleCedarRust05.jpg', image_path + 'AppleScab.JPG', image_path + 'CornGreyLeaf.jpg',
-    image_path + 'PotatoEarlyBlight1.JPG', image_path + 'TomatoEarlyBlight2.JPG', image_path + 'TomatoHealthy1.JPG', image_path + 'TomatoYellowCurlVirus1.JPG'
+    image_path / 'AppleBlackRoot.JPG', image_path / 'AppleCedarRust05.jpg', image_path / 'AppleScab.JPG', image_path / 'CornGreyLeaf.jpg',
+    image_path / 'PotatoEarlyBlight1.JPG', image_path / 'TomatoEarlyBlight2.JPG', image_path / 'TomatoHealthy1.JPG', image_path / 'TomatoYellowCurlVirus1.JPG'
 ]
 img_cap = ['Apple Black Root', 'Apple Cedar Rust', 'Apple Scab', 'Corn Cercospora Gray Leaf', 'Potato Early Blight',
            'Tomato Early Blight', 'Healthy Tomato', 'Tomato Yellow Curl Virus']
@@ -146,6 +148,7 @@ def runpdd():
         st.button('Go to Upload⬆️ Image🖼️', on_click=toggle, key='upload')
 
     if not st.session_state.button:
+        st.warning('Please try to insert small size images, as there is limited RAM in streamlit🥲.')
         inp_img = st.file_uploader('Upload image of your plant leaf here!!',type=['png','jpg','jpeg'])
 
     if st.button('Predict the Disease🍂'):

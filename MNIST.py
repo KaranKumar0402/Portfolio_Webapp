@@ -2,12 +2,14 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from streamlit_image_select import image_select
+from pathlib import Path
 
-image_path = '../Streamlit webapps/demo_images/mnist_imgs/'
+current_directory = Path(__file__).parent if '__file__' in locals() else Path.cwd()
+image_path = current_directory / 'demo_images' / 'mnist_imgs'
 img_path = [
-    image_path + 'one.jpg', image_path + 'two.jpg', image_path + 'three.jpg', image_path + 'four.jpg',
-    image_path + 'five.jpg',
-    image_path + 'six.jpg', image_path + 'seven.jpg', image_path + 'eight.jpg'
+    image_path / 'one.jpg', image_path / 'two.jpg', image_path / 'three.jpg', image_path / 'four.jpg',
+    image_path / 'five.jpg',
+    image_path / 'six.jpg', image_path / 'seven.jpg', image_path / 'eight.jpg'
 ]
 img_cap = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight']
 
@@ -70,6 +72,7 @@ def runmnist():
         st.button('Go to Upload⬆️ Image🖼️', on_click=toggle, key='upload')
 
     if not st.session_state.button:
+        st.warning('Please try to insert small size images, as there is limited RAM in streamlit🥲.')
         image2 = st.file_uploader(label="Upload the image of your DIGIT", type=['jpg', 'png'])
 
     if st.button("Predict the DIGIT 🤔"):
