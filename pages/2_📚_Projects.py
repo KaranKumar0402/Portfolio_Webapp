@@ -12,6 +12,8 @@ st.set_page_config(
 )
 
 st.write('These all are my minor projects, intentionally made for fun during my initial days of learning journey!! *So kindly enjoy😄!!')
+st.success("To see full potential of the projects, visit the link below of Hugging Face🤗 Spaces with lots of RAM capacity")
+st.link_button('Visit 🤗','https://huggingface.co/spaces/KaranKumar0402/Karan-Kumar-Singh')
 link = 'https://www.kaggle.com/code/karankumar0402/amazon-web-scraper/notebook'
 label = 'See more details about the Project🗃️'
 
