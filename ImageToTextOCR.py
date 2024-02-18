@@ -123,7 +123,6 @@ def toggle():
     else:
         st.session_state.button = True
 
-@st.cache_resource(experimental_allow_widgets=True)
 def runOCR():
     st.header('Image to Text Converter Using EasyOCR 🔠', divider='rainbow')
 
