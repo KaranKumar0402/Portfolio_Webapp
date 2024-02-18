@@ -87,6 +87,7 @@ def runmnist():
             # Preparing the final input image to show
             showimg = finalimg.reshape((28, 28)) * 25
             st.image(showimg, clamp=True, width=500)
+            st.success("That's what the computer sees in 28x28 pixels 👆")
         else:
             st.success("Make sure you image is in JPG/PNG Format 🥲")
 
