@@ -14,3 +14,4 @@ tensorflow==2.13.0
 torch==2.0.1
 torchvision==0.15.2
 Requests==2.31.0
+opencv-python-headless
