@@ -4,8 +4,7 @@ numpy==1.24.3
 opencv_contrib_python==4.8.0.76
 opencv_python==4.8.0.76
 opencv_python_headless==4.8.1.78
-Pillow==9.5.0
-Pillow==10.2.0
+Pillow
 plotly==5.17.0
 streamlit==1.28.0
 streamlit_cropperjs==0.0.8
@@ -15,6 +14,4 @@ tensorflow==2.13.0
 tensorflow_intel==2.13.0
 torch==2.0.1
 torchvision==0.15.2
-streamlit==1.24.0
-streamlit==1.26.0
 Requests==2.31.0
