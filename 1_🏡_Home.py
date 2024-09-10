@@ -8,7 +8,7 @@ st.set_page_config(
     page_icon='💻',
 )
 
-st.sidebar.success('To see some Projects, pLease select 📚Projects Page Above👆')
+st.sidebar.success('To see some Projects, please select 📚Projects Page Above👆')
 
 # --- PATH SETTINGS ---
 current_directory = Path(__file__).parent if '__file__' in locals() else Path.cwd()
